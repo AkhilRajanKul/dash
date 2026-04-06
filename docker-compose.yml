@@ -1,0 +1,25 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass your_redis_password_here
+    environment:
+      - REDIS_PASSWORD=1992
+    restart: unless-stopped
+
+  django:
+    container_name: django
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - "8001:8000"
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=TQrdS5CK2OaUlNNegxlk8DLT
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis

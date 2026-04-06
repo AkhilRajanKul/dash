@@ -1,0 +1,13 @@
+# Docker ignore
+.git
+.gitignore
+.idea
+.vscode
+.Dashboard
+venv
+.venv
+__pycache__
+*.pyc
+node_modules
+*.log
+.DS_Store
