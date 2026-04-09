@@ -1,0 +1,17 @@
+# 1. Create the management command folders
+mkdir scraper\management\commands
+New-Item scraper\management\__init__.py -ItemType File
+New-Item scraper\management\commands\__init__.py -ItemType File
+
+# 2. Copy seed_scripts_command.py → scraper/management/commands/seed_scripts.py
+#    Then EDIT the SCRIPTS list to match your actual .py filenames
+
+# 3. Run these
+python manage.py makemigrations scraper
+python manage.py migrate
+python manage.py seed_scripts
+
+# 4. Launch everything
+.\RUN.ps1
+
+# 5. Open http://localhost:8000/ → click Scraper → hit Start Fetch
